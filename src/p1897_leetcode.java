@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.Map;
+
 
 public class p1897_leetcode {
     public static boolean makeEqual(String[] words) {

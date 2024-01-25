@@ -1,22 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class p1578_leetcode {
     public static StringBuilder minCost(String colors, int[] neededTime) {
         StringBuilder sb = new StringBuilder();
         int time = 0;
-        int length = colors.length();
         int k=0;
         for(int i=1;i<colors.length();i++){
             if(colors.charAt(i) == colors.charAt(k)){
                 if(neededTime[i]<neededTime[k]){
                     time = time + neededTime[i];
-                    length--;
                 }
                 else{
                     time = time + neededTime[k];
                     k = i;
-                    length--;
                 }
             }
             else{

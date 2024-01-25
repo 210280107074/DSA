@@ -39,7 +39,7 @@ class RandomizedSet {
         int randomIndex = random.nextInt(list.size());
         return list.get(randomIndex);
     }
-    public static ArrayList<Integer> getList(){
+    public ArrayList<Integer> getList(){
         return list;
     }
 }

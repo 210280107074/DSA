@@ -87,81 +87,82 @@ public class recursion {
 
     public static void main(String[] args) {
         System.out.println("Enter a choice: ");
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
-        sc.nextLine(); 
+        try (Scanner sc = new Scanner(System.in)) {
+            int choice = sc.nextInt();
+            sc.nextLine(); 
 
-        switch (choice) {
-            case 1:
-                String str = new String();
-                System.out.println("Enter a string: ");
-                str = sc.nextLine();
-                System.out.println("Enter a character that you want to skip: ");
-                char a = sc.next().charAt(0);
-                System.out.println(skip(str, a));
-                break;
+            switch (choice) {
+                case 1:
+                    String str = new String();
+                    System.out.println("Enter a string: ");
+                    str = sc.nextLine();
+                    System.out.println("Enter a character that you want to skip: ");
+                    char a = sc.next().charAt(0);
+                    System.out.println(skip(str, a));
+                    break;
 
-            case 2:
-                System.out.println("Enter the size of array: ");
-                int n = sc.nextInt();
-                int[] arr = new int[n];
-                for (int i = 0; i < n; i++) {
-                    arr[i] = sc.nextInt();
+                case 2:
+                    System.out.println("Enter the size of array: ");
+                    int n = sc.nextInt();
+                    int[] arr = new int[n];
+                    for (int i = 0; i < n; i++) {
+                        arr[i] = sc.nextInt();
+                    }
+                    System.out.println("Enter the number that you want to search: ");
+                    int num = sc.nextInt();
+                    System.out.println(BinarySearch(arr, 0, n - 1, num));
+                    break;
+
+                case 3:
+                    System.out.println("Enter the size of array: ");
+                    int l = sc.nextInt();
+                    int[] arr2 = new int[l];
+                    System.out.println("enter the elements in array : ");
+                    for (int i = 0; i < l; i++) {
+                        arr2[i] = sc.nextInt();
+                    }
+                    List<List<Integer>> ans = subset(arr2);
+                    for (List<Integer> list : ans) {
+                        System.out.print(list);
+                        System.out.print(",");
+                    }
+                    break;
+
+                case 4:
+                String input = new String();
+                System.out.println("Enter the string : ");
+                input = sc.nextLine();
+
+                List<String> permutations = generatePermutations(input);
+   
+
+                for (String perm : permutations) {
+                    System.out.println(perm);
                 }
-                System.out.println("Enter the number that you want to search: ");
-                int num = sc.nextInt();
-                System.out.println(BinarySearch(arr, 0, n - 1, num));
                 break;
 
-            case 3:
-                System.out.println("Enter the size of array: ");
-                int l = sc.nextInt();
-                int[] arr2 = new int[l];
-                System.out.println("enter the elements in array : ");
-                for (int i = 0; i < l; i++) {
-                    arr2[i] = sc.nextInt();
+                case 5:
+                System.out.println("Enter the size of the array: ");
+                int size = sc.nextInt();
+                int[] array = new int[size];
+            
+                System.out.println("Enter the elements in the array: ");
+                for (int i = 0; i < size; i++) {
+                    array[i] = sc.nextInt();
                 }
-                List<List<Integer>> ans = subset(arr2);
-                for (List<Integer> list : ans) {
-                    System.out.print(list);
-                    System.out.print(",");
+            
+                List<List<Integer>> arrayPermutations = generateArrayPermutation(array);
+            
+                System.out.println("Permutations of the array:");
+                for (List<Integer> permutation : arrayPermutations) {
+                    System.out.print(permutation + " ");
                 }
                 break;
 
-            case 4:
-            String input = new String();
-            System.out.println("Enter the string : ");
-            input = sc.nextLine();
-
-            List<String> permutations = generatePermutations(input);
-    
-
-            for (String perm : permutations) {
-                System.out.println(perm);
+                default:
+                    System.out.println("Invalid choice");
+                    break;
             }
-            break;
-
-            case 5:
-            System.out.println("Enter the size of the array: ");
-            int size = sc.nextInt();
-            int[] array = new int[size];
-        
-            System.out.println("Enter the elements in the array: ");
-            for (int i = 0; i < size; i++) {
-                array[i] = sc.nextInt();
-            }
-        
-            List<List<Integer>> arrayPermutations = generateArrayPermutation(array);
-        
-            System.out.println("Permutations of the array:");
-            for (List<Integer> permutation : arrayPermutations) {
-                System.out.print(permutation + " ");
-            }
-            break;
-
-            default:
-                System.out.println("Invalid choice");
-                break;
         }
     }
 }

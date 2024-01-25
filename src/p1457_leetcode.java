@@ -20,7 +20,7 @@ class TreeNode {
 }
 
 public class p1457_leetcode {
-    public int pseudoPalindromicPaths(TreeNode root) {
+    public static int pseudoPalindromicPaths(TreeNode root) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         solve(root, new ArrayList<>(), result);
 
@@ -60,10 +60,9 @@ public class p1457_leetcode {
         root.right.right = new TreeNode(1);
 
         // Create an instance of the p1457_leetcode class
-        p1457_leetcode solution = new p1457_leetcode();
 
         // Call the pseudoPalindromicPaths method and print the result
-        int result = solution.pseudoPalindromicPaths(root);
+        int result = pseudoPalindromicPaths(root);
         System.out.println("Result: " + result);
     }
 }

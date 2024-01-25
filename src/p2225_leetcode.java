@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +29,7 @@ public class p2225_leetcode {
         }
         List<List<Integer>> ans = new ArrayList<>();
         Collections.sort(win);
-        Collections.sort(lost);
+        Collections.sort(loss);
         ans.add(win);
         ans.add(loss);
         return ans;

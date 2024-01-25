@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class p1436_leetcode {
   public static void main(String[] args) {
@@ -16,12 +15,6 @@ public class p1436_leetcode {
     // path3.add("LIMA");
     // path3.add("SAO PAULO");
     paths.add(path1);
-    // paths.add(path2);
-    // paths.add(path3);
-    String s = new String();
-    s = "Dhruvil";
-
-
     System.out.println(destCity(paths));
   }
 

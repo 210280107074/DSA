@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+
 
 public class p2610_leetcode {
-     public List<List<Integer>> findMatrix(int[] nums) {
+     public int[][] findMatrix(int[] nums) {
         // int max_freq = 0;
         // int max_freq_num = 0;
         // HashMap<Integer,Integer> count = new HashMap<>();

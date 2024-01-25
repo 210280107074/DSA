@@ -3,7 +3,6 @@ import java.util.Arrays;
 class p1637_leetcode {
     public static int maxWidthOfVerticalArea(int[][] points) {
         int[] x_co = new int[points.length];
-        int index = 0;
         int ans = 0;
 
         for (int i = 0; i < points.length; i++) {
