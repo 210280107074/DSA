@@ -24,7 +24,7 @@ public class p1457_leetcode {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         solve(root, new ArrayList<>(), result);
 
-        // You may want to perform some logic here with the 'result' list
+        // You may want to perform some logic here with the 'result' temp
         // For now, just returning 0 as in your original code
         return 0;
     }
@@ -33,21 +33,22 @@ public class p1457_leetcode {
         if(root == null){
             return 0;
         }
-        if (root.left == null && root.right == null) {
-            result.add(new ArrayList<>(temp));
-            System.out.println(temp);
-            return 0;
-        } 
+        else{
             temp.add(root.val);
-            if (root.left != null) {
-                solve(root.left, temp, result);
-            } else if (root.right != null) {
-                solve(root.right, temp, result);
+            if(root.left == null && root.right == null){
+                result.add(temp);
+                System.out.println(temp);
             }
-        temp.remove(temp.size() - 1);
-
-        return 0;
-    }
+            else{
+                solve(root.left,temp,result);
+                solve(root.right, temp,result);
+            }
+            if(temp.size()-1 > 0){
+                temp.remove(temp.size() - 1);
+            }
+            return 0;
+        }
+        }
 
     public static void main(String[] args) {
         // Create a sample binary tree
