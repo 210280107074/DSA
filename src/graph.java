@@ -117,15 +117,15 @@ public class graph {
         solve2(graph,result,path,vis,start,target);
         return result;
     }
-    public static void solve2(ArrayList<Edge>[] graph, ArrayList<ArrayList<Integer>> allPaths, ArrayList<Integer> path, boolean[] vis, int curr, int target) {
+    public static void solve2(ArrayList<Edge>[] graph, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> path, boolean[] vis, int curr, int target) {
         path.add(curr);
         if (curr == target) {
-            System.out.println(path);
+            result.add(new ArrayList<>(path));
         } else {
             vis[curr] = true;
             for (Edge e : graph[curr]) {
                 if (!vis[e.dest]) {
-                    solve2(graph, allPaths, path, vis, e.dest, target);
+                    solve2(graph, result, path, vis, e.dest, target);
                 }
             }
             vis[curr] = false;
@@ -144,11 +144,7 @@ public class graph {
         // DFS(graph,0,vis);
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         result = printAllPath2(graph,0,7,5);
-       
-
         // Printing all paths
-        for (ArrayList<Integer> path : result) {
-            System.out.println(path);
-        }
+        System.out.println(result);
     }
 }
