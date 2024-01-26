@@ -132,6 +132,23 @@ public class graph {
         }
         path.remove(path.size() - 1);
     }
+    public static boolean cycle(ArrayList<Edge> graph[],boolean vis[],boolean rec[],int curr){
+        rec[curr]= true;
+        vis[curr]= true;
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(rec[e.dest]){
+                return true;
+            } 
+            else if(!vis[e.dest]){
+                if(cycle(graph, vis, rec, e.dest)){
+                        return true;
+                }
+            }
+        }
+        rec[curr] = false;
+        return false;
+    }
 
 
     public static void main(String[] args) {
@@ -146,5 +163,7 @@ public class graph {
         result = printAllPath2(graph,0,7,5);
         // Printing all paths
         System.out.println(result);
+        boolean rec[] = new boolean[7];
+        System.out.println(cycle(graph, vis, rec, 0));
     }
 }
