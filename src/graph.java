@@ -105,11 +105,29 @@ public class graph {
             Edge e = graph[curr].get(i);
             if (!vis[e.dest]) {
                 vis[curr] = true;
-                printAllPath(path + " " + e.dest, vis, e.dest, target, graph);
+                printAllPath(path + " " + graph[curr].get(i).dest, vis, e.dest, target, graph);
                 vis[curr] = false;
             }
         }
     }
+    public static ArrayList<ArrayList<Integer>> printAllPath2(ArrayList<Edge> graph[],int start,int target){
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        ArrayList<Integer> path = new ArrayList<>();
+        solve2(graph,result,path,target,start);
+        return result;
+    }
+    public static void solve2( ArrayList<Edge> graph[],ArrayList<ArrayList<Integer>> result, ArrayList<Integer> path,int curr,int target){
+        path.add(curr);
+        if(curr == target){
+            result.add(new ArrayList<>(path));
+        }
+        else{
+            for(int i=0;i<graph[curr].size();i++){
+                solve2(graph,result,path,graph[curr].get(i).dest,target);
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
         int v = 7; // Corrected the number of vertices to 7
@@ -119,12 +137,12 @@ public class graph {
         // printNeighbors(graph, 2);
         // BFS(graph, v);
         // DFS(graph,0,vis);
-        printAllPath("0", vis, 0, 5, graph);
-        ArrayList<ArrayList<String>> result = new ArrayList<>();
-        solve("0", vis, 0, 5, graph, result);
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        result = printAllPath2(graph,0,5);
+       
 
         // Printing all paths
-        for (ArrayList<String> path : result) {
+        for (ArrayList<Integer> path : result) {
             System.out.println(path);
         }
     }
