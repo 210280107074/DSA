@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class graph {
     static class Edge {
@@ -149,7 +150,30 @@ public class graph {
         rec[curr] = false;
         return false;
     }
-
+    public static void topologicalSortUtil(ArrayList<Edge> graph[],int curr,boolean vis[],Stack<Integer> s){
+        vis[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(!vis[curr]){
+                topologicalSortUtil(graph, e.dest, vis, s);
+            }
+        }
+        s.push(curr);
+    }
+    public static ArrayList topologicalSort(ArrayList<Edge> graph[],int v){
+        boolean vis[] = new boolean[v];
+        ArrayList<Integer> list = new ArrayList<>();
+        Stack<Integer> s = new Stack<>();
+        for(int i=0;i<v;i++){
+            if(!vis[i]){
+                topologicalSortUtil(graph, i, vis, s);
+            }
+        }
+        while(!s.empty()){
+            list.add(s.pop());
+        }
+        return list;
+    }
 
     public static void main(String[] args) {
         int v = 7; // Corrected the number of vertices to 7
@@ -159,11 +183,12 @@ public class graph {
         // printNeighbors(graph, 2);
         // BFS(graph, v);
         // DFS(graph,0,vis);
-        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        result = printAllPath2(graph,0,7,5);
+        // ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        // result = printAllPath2(graph,0,7,5);
         // Printing all paths
-        System.out.println(result);
-        boolean rec[] = new boolean[7];
-        System.out.println(cycle(graph, vis, rec, 0));
+        // System.out.println(result);
+        // boolean rec[] = new boolean[7];
+        // System.out.println(cycle(graph, vis, rec, 0));
+        System.out.println(topologicalSort(graph, v));
     }
 }
