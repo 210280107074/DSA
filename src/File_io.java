@@ -1,8 +1,12 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
 public class File_io {
@@ -37,20 +41,50 @@ public class File_io {
     //     System.out.println(e.getMessage());
     // }
 
-try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
-    System.out.println("type a message : ");
-    System.out.println("you typed " + br.readLine());
+// try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+//     System.out.println("type a message : ");
+//     System.out.println("you typed " + br.readLine());
   
-}
-catch(IOException e){
-    System.out.println(e.getMessage());
-}
-// try(BufferedReader br = new BufferedReader(new FileReader("notes.txt"))){
-//     br.readLine();
 // }
 // catch(IOException e){
 //     System.out.println(e.getMessage());
 // }
+
+// try(BufferedReader br = new BufferedReader(new FileReader("notes.txt"))){
+//     System.out.println(br.readLine());
+// }
+// catch(IOException e){
+//     System.out.println(e.getMessage());
+// }
+
+// try(OutputStreamWriter osw = new OutputStreamWriter(System.out) ){
+//     osw.write("hello world");
+// }
+// catch(IOException e){
+//     System.out.println(e.getMessage());
+// }
+
+// try(FileWriter osw = new FileWriter("notes.txt") ){
+//     osw.write(" hello world");
+// }
+// catch(IOException e){
+//     System.out.println(e.getMessage());
+// }
+
+//creating a file
+try{
+    File file = new File("new.txt");
+    file.createNewFile();
+    try(FileWriter fw = new FileWriter("new.txt")){
+        fw.write("congrats !! new file created");
+    }
+    catch(IOException e){
+        System.out.println(e.getMessage());
+    }
+}
+catch(IOException e){
+    System.out.println(e.getMessage());
+}
 
 }
 }
