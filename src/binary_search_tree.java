@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class node{
     int data;
     node right;
@@ -75,16 +77,44 @@ public class binary_search_tree {
         System.out.print(root.data + " ");
         InOrder(root.right);
     }
+     public static boolean isValidBST(node root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        inorder(root,list);
+         boolean flag = true;
+        for(int i=0;i<list.size();i++){
+            if(i+1<list.size()){
+            if(list.get(i)>=list.get(i+1)){
+                flag = false;
+                break;
+            }
+            }
+            if(i==(list.size()-1)){
+               flag = true;
+            }
+        }
+        return flag;
+    }
+    public static ArrayList inorder(node root,ArrayList<Integer> list){
+        if(root == null){
+            return list;
+        }
+            inorder(root.left,list);
+            list.add(root.data);
+            inorder(root.right,list);
+            return list;
+    }
     public static void main(String[] args) {
         int data[]  = {5,3,30,56,4,58,66,99,77,88};
         node root = null;
         for(int i=0;i<data.length;i++){
             root = insertNode(root,data[i]);
         }
-        InOrder(root);
-        // System.out.println(search(root, 3));
-        deleteNode(root, 58);
-        System.out.println();
-        InOrder(root);
+        // InOrder(root);
+        // // System.out.println(search(root, 3));
+        // deleteNode(root, 58);
+        // System.out.println();
+        // InOrder(root);
+        System.out.println(isValidBST(root));
+
     }
 }

@@ -81,7 +81,6 @@ public class graph {
     public static void solve(String path, boolean vis[], int curr, int target, ArrayList<Edge> graph[],
             ArrayList<ArrayList<String>> allPaths) {
         if (curr == target) {
-
             allPaths.add(new ArrayList<>(List.of(path.split(" "))));
             return;
         }
