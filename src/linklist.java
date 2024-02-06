@@ -44,7 +44,6 @@ public class linklist {
             int value = head.value;
             head = head.next;
             return value;
-
         }
         public Node get(int index){
             Node temp = head;
@@ -87,45 +86,6 @@ public class linklist {
                 fast = fast.next.next;
             }
             return slow;
-        }
-        public static mergeSort(Node node){
-            if(node == null || node.next == null){
-                return node;
-            }
-            Node middle = getMid(node);
-            Node secondHalf = middle.next;
-            middle.next = null;
-            Node left = mergeSort(node);
-            Node right = mergeSort(secondHalf);
-
-            return Merge(left,right);
-        }
-        public static Node Merge(Node left,Node right){
-            Node dummy = new Node(); 
-            Node tail = dummy;
-            while(left != null && right != null){
-                if(left.value < right.value){
-                    tail.next = left;
-                    left = left.next;
-                    tail = tail.next;
-                }
-                else{
-                    tail.next = right;
-                    tail = tail.next;
-                    right = right.next;
-                }
-            }
-            while(left != null){
-                tail.next = left;
-                tail = tail.next;
-                left = left.next;
-            }
-            while(right != null){
-                tail.next = right;
-                tail = tail.next;
-                right = right.next;
-            }
-            return tail;
         }
         public int findSquare(int number){
             int ans = 0;
