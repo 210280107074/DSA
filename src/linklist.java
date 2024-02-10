@@ -15,14 +15,6 @@ public class linklist {
             public Node(int value) {
                 this.value = value;
             }
-            public Node(){
-                Node node = new Node();
-            }
-
-            public Node(int value, Node next) {
-                this.value = value;
-                this.next = next;
-            }
         }
 
         public void insertFirst(int value) {
