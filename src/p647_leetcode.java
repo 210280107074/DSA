@@ -1,5 +1,5 @@
 class p647_leetcode {
-    
+
     public static int countSubstrings(String s) {
         return find(s);
     }
@@ -32,8 +32,8 @@ class p647_leetcode {
 
 
     public static int countSubstringsUsingDP(String s) {
-        int dp[] = new int[s.length()];
-        return find(s,dp);
+        int dp[][] = new int[s.length()][s.length()];
+        return findUsingDP(s,dp);
     }
     public static boolean isPalindromWithDP(int i,int j,String s,int dp[][]){
         if(i>=j){
