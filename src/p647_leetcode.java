@@ -29,6 +29,9 @@ class p647_leetcode {
         return count;
     }
 
+
+
+
     public static int countSubstringsUsingDP(String s) {
         int dp[][] = new int[s.length()][s.length()];
         return findUsingDP(s,dp);
@@ -61,6 +64,8 @@ class p647_leetcode {
     }
 
 
+
+
     public static int solve(String s){
         boolean t[][] = new boolean[s.length()][s.length()];
         int count = 0;
@@ -90,6 +95,9 @@ class p647_leetcode {
         return count;
     }
 
+
+
+    
     public static void main(String[] args) {
         System.out.println(countSubstrings("aaa"));
         System.out.println(solve("aaa"));
