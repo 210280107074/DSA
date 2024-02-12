@@ -19,7 +19,7 @@ class TreeNode {
   }
 
 class node {
-    static int data;
+    int data;
     node right;
     node left;
 
@@ -30,16 +30,17 @@ class node {
     public static node CreateTree() {
         node root = null;
         System.out.println("enter the data : ");
-        Scanner sc = new Scanner(System.in);
-        int data = sc.nextInt();
-        if (data == -1) {
-            return null;
-        }
+        try (Scanner sc = new Scanner(System.in)) {
+            int data = sc.nextInt();
+            if (data == -1) {
+                return null;
+            }
 
-        root = new node(data);
-        System.out.println("enter the left of " + data);
-        root.left = CreateTree();
-        System.out.println("enter the right of " + data);
+            root = new node(data);
+            System.out.println("enter the left of " + data);
+            root.left = CreateTree();
+            System.out.println("enter the right of " + data);
+        }
         root.right = CreateTree();
 
         return root;
