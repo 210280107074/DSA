@@ -9,7 +9,22 @@ public class maze_problems{
             return right + down;
         }
     }
+    public static void printWays(String p,int r,int c){
+        if(r==1 && c==1){
+            System.out.println(p);
+            return;
+        }
+        else{
+            if(r>1){
+                printWays(p+"R", r-1, c);
+            }
+            if(c>1){
+                printWays(p+"D", r, c-1);
+            }
+        }
+    }
     public static void main(String[] args) {
         System.out.println(countWays(4,4));
+        printWays("", 4, 4);
     }
 }
