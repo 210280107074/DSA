@@ -1,8 +1,12 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class recursion {
+import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
+
+public class subset_subsequence {
+     static ArrayList<String> list = new ArrayList<>();
     public static String skip(String q, char k) {
         if (q.isEmpty()) {
             return "";
@@ -43,6 +47,18 @@ public class recursion {
         }
         return outer;
     }
+    public static void sequence(String str,String ans) {
+        
+        if(str.length() == 0){
+            list.add(ans);
+            return;
+        }
+        else{
+          sequence(str.substring(1), ans + str.charAt(0));
+          sequence(str.substring(1), ans);
+        }
+        
+    }
     public static List<String> generatePermutations(String str){
         List<String> result = new ArrayList<>();
         stringPermutation("", str, result);
@@ -71,6 +87,7 @@ public class recursion {
     }
 
     private static void ArrayPermutations(List<Integer> current, List<Integer> remaining, List<List<Integer>> result) {
+       
         if(remaining.isEmpty()){
             result.add(current);
             return;
@@ -158,6 +175,14 @@ public class recursion {
                     System.out.print(permutation + " ");
                 }
                 break;
+                case 6:
+                System.out.println("Enter the String : ");
+                String s = sc.nextLine();
+                
+                sequence(s," ");
+                list.remove(" ");
+                Collections.sort(list);
+                System.out.println(list);
 
                 default:
                     System.out.println("Invalid choice");
