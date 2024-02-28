@@ -117,7 +117,27 @@ class node {
         lvlorder(root,list);
         return list;
     }
-
+    public static int findBottomLeftValue(node root) {
+        int last = 0;
+        Queue<node> q = new LinkedList<>();
+        q.offer(root);
+         while(!q.isEmpty()){
+             int count = q.size();
+                 for(int i=0;i<count;i++){
+                     node curr = q.poll();
+                     if(i==0){
+                         last = curr.data;
+                     }
+                     if(curr.left != null){
+                         q.add(curr.left);
+                     }
+                     if(curr.right != null){
+                         q.add(curr.right);
+                     }
+                 }
+         }
+         return last; 
+     }
     public static void lvlorder(TreeNode root,List<List<Integer>> list){
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
