@@ -69,6 +69,44 @@ public class tree {
         preorder(root.right);
     }
 
+    public boolean isEvenOddTree(TreeNode root) {
+        if (root == null)
+       return false;
+
+   Queue<TreeNode> queue = new LinkedList<>();
+   queue.add(root);
+   int level = 0;
+   while(!queue.isEmpty()){
+       int size = queue.size();
+       int count = 0;
+      
+       for(int i=0;i<size;i++){
+           TreeNode curr = queue.poll();
+           if(curr.left != null){
+               queue.offer(curr.left);
+               count++;
+           }
+           if(curr.right != null){
+               queue.offer(curr.right);
+               count++;
+           }
+       }
+       if(level%2 == 0){
+           if(count%2 == 0){
+               return false;
+           }
+       }
+       if(level%2 != 0){
+           if(count%2 != 0){
+               return false;
+           }
+       }
+       System.out.print(count);
+       level++;
+   }
+   return true;  
+   }
+
     // Height of tree
     public static int height(TreeNode root) {
         if (root == null) {
