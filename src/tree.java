@@ -29,7 +29,6 @@ public class tree {
         if (data == -1) {
             return null;
         }
-
         TreeNode root = new TreeNode(data);
         System.out.println("Enter the left of " + data);
         root.left = createTree();
