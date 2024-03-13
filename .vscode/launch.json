@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "p2485_leetcode",
+            "request": "launch",
+            "mainClass": "p2485_leetcode",
+            "projectName": "DSA_79061d18"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
