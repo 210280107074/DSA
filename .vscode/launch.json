@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "subarray_sum_k",
+            "request": "launch",
+            "mainClass": "subarray_sum_k",
+            "projectName": "DSA_79061d18"
+        },
+        {
+            "type": "java",
+            "name": "p930_leetcode",
+            "request": "launch",
+            "mainClass": "p930_leetcode",
+            "projectName": "DSA_79061d18"
+        },
+        {
+            "type": "java",
             "name": "p2485_leetcode",
             "request": "launch",
             "mainClass": "p2485_leetcode",
