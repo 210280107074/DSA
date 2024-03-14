@@ -19,9 +19,7 @@ public class subarray_sum_k {
         return count;
     }
     public static int non_cont_sumsubarray(int nums[],int target){
-        
         return solve(nums,0,0,target);
-
     }
     public static int solve(int nums[],int idx,int curr,int sum){
         if(idx == nums.length){
