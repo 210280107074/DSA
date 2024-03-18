@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "image_read_write",
+            "request": "launch",
+            "mainClass": "image_read_write",
+            "projectName": "DSA_79061d18"
+        },
+        {
+            "type": "java",
             "name": "p525_leetcode",
             "request": "launch",
             "mainClass": "p525_leetcode",
