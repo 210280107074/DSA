@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "sortest_job_first",
+            "request": "launch",
+            "mainClass": "sortest_job_first",
+            "projectName": "DSA_79061d18"
+        },
+        {
+            "type": "java",
+            "name": "p452_leetcode",
+            "request": "launch",
+            "mainClass": "p452_leetcode",
+            "projectName": "DSA_79061d18"
+        },
+        {
+            "type": "java",
             "name": "image_read_write",
             "request": "launch",
             "mainClass": "image_read_write",
