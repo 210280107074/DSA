@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GFG_2902",
+            "request": "launch",
+            "mainClass": "GFG_2902",
+            "projectName": "DSA"
+        },
+        {
+            "type": "java",
+            "name": "anonymous",
+            "request": "launch",
+            "mainClass": "anonymous",
+            "projectName": "DSA"
+        },
+        {
+            "type": "java",
             "name": "patterns",
             "request": "launch",
             "mainClass": "patterns",
