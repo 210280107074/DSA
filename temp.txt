@@ -1,0 +1,49 @@
+-- Customers Table
+CREATE TABLE Customers (
+    CustomerID SERIAL PRIMARY KEY,
+    CustomerName VARCHAR(255) NOT NULL CHECK (LENGTH(CustomerName) > 2),
+    Email VARCHAR(255) UNIQUE NOT NULL CHECK (POSITION('@' IN Email) > 1),
+    Country VARCHAR(100) CHECK (LENGTH(Country) > 2),
+    SignupDate DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
+-- Products Table
+CREATE TABLE Products (
+    ProductID SERIAL PRIMARY KEY,
+    ProductName VARCHAR(255) NOT NULL CHECK (LENGTH(ProductName) > 2),
+    Category VARCHAR(100) NOT NULL CHECK (LENGTH(Category) > 2),
+    Price DECIMAL(10,2) NOT NULL CHECK (Price >= 0),
+    StockQuantity INT NOT NULL CHECK (StockQuantity >= 0)
+);
+
+-- Orders Table
+CREATE TABLE Orders (
+    OrderID SERIAL PRIMARY KEY,
+    CustomerID INT NOT NULL,
+    OrderDate DATE NOT NULL DEFAULT CURRENT_DATE CHECK (OrderDate <= CURRENT_DATE),
+    TotalAmount DECIMAL(10,2) NOT NULL CHECK (TotalAmount >= 0),
+    Status VARCHAR(20) NOT NULL CHECK (Status IN ('Pending', 'Shipped', 'Delivered', 'Cancelled')),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE
+);
+
+-- OrderDetails Table
+CREATE TABLE OrderDetails (
+    OrderDetailID SERIAL PRIMARY KEY,
+    OrderID INT NOT NULL,
+    ProductID INT NOT NULL,
+    Quantity INT NOT NULL CHECK (Quantity > 0),
+    Price DECIMAL(10,2) NOT NULL CHECK (Price >= 0),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID) ON DELETE CASCADE,
+    CONSTRAINT unique_order_product UNIQUE (OrderID, ProductID) -- Prevent duplicate product entries in the same order
+);
+
+-- Payments Table
+CREATE TABLE Payments (
+    PaymentID SERIAL PRIMARY KEY,
+    OrderID INT NOT NULL,
+    PaymentDate DATE NOT NULL DEFAULT CURRENT_DATE CHECK (PaymentDate <= CURRENT_DATE),
+    PaymentMethod VARCHAR(50) NOT NULL CHECK (PaymentMethod IN ('Credit Card', 'PayPal', 'Bank Transfer')),
+    Amount DECIMAL(10,2) NOT NULL CHECK (Amount >= 0),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID) ON DELETE CASCADE
+);
