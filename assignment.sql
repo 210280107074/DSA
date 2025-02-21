@@ -42,7 +42,31 @@ select COUNT(o.productid) as count,p.productname as p from  orderdetails o
 JOIN products as p ON o.productid = p.productid
 group by p.productid order by count desc limit 1;
 
--- que-7
+-- que-7WITH FirstOrder AS (
+    SELECT CustomerID, MIN(OrderDate) AS FirstOrderDate
+    FROM Orders
+    GROUP BY CustomerID
+),
+RepeatCustomers AS (
+    SELECT o.CustomerID
+    FROM Orders o
+    JOIN FirstOrder f ON o.CustomerID = f.CustomerID
+    WHERE o.OrderDate > f.FirstOrderDate AND o.OrderDate <= DATEADD(DAY, 90, f.FirstOrderDate)
+    GROUP BY o.CustomerID
+)
+SELECT 
+    (COUNT(DISTINCT r.CustomerID) * 100.0 / COUNT(DISTINCT f.CustomerID)) AS RetentionRate
+FROM FirstOrder f
+LEFT JOIN RepeatCustomers r ON f.CustomerID = r.CustomerID;
+
+
+SELECT 
+    PaymentMethod, 
+    SUM(Amount) AS TotalRevenue, 
+    (SUM(Amount) * 100.0 / (SELECT SUM(Amount) FROM Payments)) AS RevenuePercentage
+FROM Payments
+GROUP BY PaymentMethod;
+
 
 select *from products
 select *from orderdetails
