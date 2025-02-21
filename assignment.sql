@@ -68,6 +68,25 @@ FROM Payments
 GROUP BY PaymentMethod;
 
 
+SELECT 
+    AVG(DATEDIFF(DAY, OrderDate, DeliveredDate)) AS AvgProcessingTime
+FROM (
+    SELECT OrderID, OrderDate,
+           (SELECT MIN(OrderDate) FROM Orders o2 WHERE o2.OrderID = o1.OrderID AND Status = 'Delivered') AS DeliveredDate
+    FROM Orders o1
+    WHERE Status IN ('Pending', 'Delivered')
+) t
+WHERE DeliveredDate IS NOT NULL;
+
+
+SELECT 
+    (COUNT(DISTINCT CustomerID) * 100.0 / (SELECT COUNT(DISTINCT CustomerID) FROM Orders)) AS RepeatCustomerRate
+FROM Orders
+GROUP BY CustomerID
+HAVING COUNT(OrderID) > 1;
+
+
+
 select *from products
 select *from orderdetails
 select *from customers;
